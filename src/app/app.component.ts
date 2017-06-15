@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 const Web3 = require('web3');
 const contract = require('truffle-contract');
 const metaincoinArtifacts = require('../../build/contracts/MetaCoin.json');
+import { canBeNumber } from '../util/validation';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,17 @@ const metaincoinArtifacts = require('../../build/contracts/MetaCoin.json');
 })
 export class AppComponent {
   MetaCoin = contract(metaincoinArtifacts);
+
+  // TODO add proper types these variables
   account: any;
   accounts: any;
   web3: any;
+
   balance: number;
   sendingAmount: number;
-  receiverAddress: string;
+  recipientAddress: string;
   status: string;
+  canBeNumber = canBeNumber;
 
   constructor() {
     this.checkAndInstantiateWeb3();
@@ -81,7 +86,7 @@ export class AppComponent {
 
   sendCoin = () => {
     const amount = this.sendingAmount;
-    const receiver = this.receiverAddress;
+    const receiver = this.recipientAddress;
     let meta;
 
     this.setStatus("Initiating transaction... (please wait)");

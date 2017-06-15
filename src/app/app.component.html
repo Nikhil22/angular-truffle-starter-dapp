@@ -13,27 +13,74 @@
 <br>
 <div class="container">
   <h1 class="title">Send Metacoin</h1>
-  <span id="status">{{status}}</span>
+  <h1 class="title is-4 is-info help">{{status}}</h1>
 
-  <div class="field">
-    <label class="label">Amount</label>
-    <p class="control">
-      <input  class="input" type="text" placeholder="95">
-    </p>
-  </div>
-  <div class="field">
-    <label class="label">To Address</label>
-    <p class="control">
-      <input class="input" type="text" placeholder="0x93e66d9baea28c17d9fc393b53e3fbdd76899dae">
-    </p>
-  </div>
+  <form #coinForm="ngForm">
+    <div class="field">
+      <label class="label">Amount</label>
+      <p class="control">
+        <input
+          [(ngModel)]="sendingAmount"
+          class="input"
+          type="text"
+          placeholder="95"
+          name="sendingAmount"
+          required
+          #sendingAmountModel="ngModel">
+      </p>
+      <div *ngIf="sendingAmountModel.errors && (sendingAmountModel.dirty || sendingAmountModel.touched)"
+           class="help is-danger">
+          <p [hidden]="!sendingAmountModel.errors.required">
+            This field is required
+          </p>
+      </div>
+      <div *ngIf="!sendingAmountModel.errors && (sendingAmountModel.dirty || sendingAmountModel.touched)"
+           class="help is-danger">
+          <p [hidden]="canBeNumber(sendingAmount)">
+            Must be a number
+          </p>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">To Address</label>
+      <p class="control">
+        <input
+          [(ngModel)]="recipientAddress"
+          name="recipientAddress"
+          class="input"
+          type="text"
+          placeholder="0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"
+          name="recipientAddress"
+          required
+          #recipientAddressModel="ngModel"
+        >
+      </p>
+      <div *ngIf="recipientAddressModel.errors && (recipientAddressModel.dirty || recipientAddressModel.touched)"
+           class="help is-danger">
+          <p [hidden]="!recipientAddressModel.errors.required">
+            This field is required
+          </p>
+      </div>
+      <div *ngIf="!recipientAddressModel.errors && (recipientAddressModel.dirty || recipientAddressModel.touched)"
+           class="help is-danger">
+          <p [hidden]="canBeNumber(recipientAddress)">
+            Must be a number
+          </p>
+      </div>
+    </div>
 
-  <div class="field is-grouped">
-    <p class="control">
-      <button (click)="sendCoin()" class="button is-primary">Send</button>
-    </p>
-  </div>
+    <div class="field is-grouped">
+      <p class="control">
+        <button
+          [disabled]="!coinForm.valid"
+          (click)="sendCoin()"
+          class="button is-primary">
+          Send
+        </button>
+      </p>
+    </div>
+  </form>
 
-  <span class="hint"><strong>Hint:</strong> open the browser developer console to view any errors and warnings.</span>
+  <strong>Hint:</strong> open the browser developer console to view any errors and warnings.
 
 </div>
