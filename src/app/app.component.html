@@ -1,0 +1,39 @@
+<section class="hero is-medium is-info is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-1">
+        Metacoin ~ Angular2 + Truffle Starter Dapp
+      </h1>
+      <h2 class="title">
+        You have <span class="is-medium has-underline">{{balance}}</span> META
+      </h2>
+    </div>
+  </div>
+</section>
+<br>
+<div class="container">
+  <h1 class="title">Send Metacoin</h1>
+  <span id="status">{{status}}</span>
+
+  <div class="field">
+    <label class="label">Amount</label>
+    <p class="control">
+      <input  class="input" type="text" placeholder="95">
+    </p>
+  </div>
+  <div class="field">
+    <label class="label">To Address</label>
+    <p class="control">
+      <input class="input" type="text" placeholder="0x93e66d9baea28c17d9fc393b53e3fbdd76899dae">
+    </p>
+  </div>
+
+  <div class="field is-grouped">
+    <p class="control">
+      <button (click)="sendCoin()" class="button is-primary">Send</button>
+    </p>
+  </div>
+
+  <span class="hint"><strong>Hint:</strong> open the browser developer console to view any errors and warnings.</span>
+
+</div>
