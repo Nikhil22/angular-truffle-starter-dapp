@@ -12,4 +12,10 @@ describe('Validation of string; check if it can be a number', () => {
     const result = canBeNumber(str);
     expect(result).toBe(false);
   });
+
+  it('should return false', () => {
+    const str = '';
+    const result = canBeNumber(str);
+    expect(result).toBe(false);
+  });
 });
