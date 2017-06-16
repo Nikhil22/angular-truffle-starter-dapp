@@ -1,9 +1,32 @@
-# AngularTruffle
+# Angular-Truffle
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+An Angular2 + Truffle start app.
+
+## Demo
+Create a coin with an initial supply and send an amount to your Ethereum wallet address
+
+![demo](src/app/assets/demo.gif)
+
+## How to use
+There are 2 parts to this.
+
+### Part 1
+
+1. `git clone`
+2. `cd angular-truffle`
+3. `npm install`
+
+### Part 2
+Be sure you're connected to an Ethereum client before running these commands. If you're new, install [testrpc](https://github.com/ethereumjs/testrpc) to run a local blockchain RPC server. After that, simply run `testrpc` in a new tab.
+
+And then in the original tab, run:
+
+5. `truffle compile`
+6. `truffle migrate`
+7. `ng serve`. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+8. Make sure there are no errors in browser console
 
 ## Code scaffolding
 
@@ -15,7 +38,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Run `truffle test` to run tests associated with your solidity smart contracts. The test folder for this can be found in the `test` directory at the root level of this project
 
 ## Running end-to-end tests
 
@@ -25,3 +49,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Technologies & Languages Used
+1. Angular2 (Typescript/Javascript)
+2. Truffle (Solidity)
