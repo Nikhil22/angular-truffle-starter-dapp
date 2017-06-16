@@ -23,10 +23,10 @@ For the second part, be sure you're connected to an Ethereum client before runni
 
 And then in the original tab, run:
 
-5. `truffle compile`
-6. `truffle migrate`
-7. `ng serve`. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-8. Make sure there are no errors in browser console
+4. `truffle compile` to compile your contracts
+5. `truffle migrate` to deploy those contracts to the network
+6. `ng serve`. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+7. Make sure there are no errors in browser console
 
 ## Code scaffolding
 
