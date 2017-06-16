@@ -48,7 +48,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Contribute
 
-Contributions are always welcome & encouraged! :simple_smile: If you'd like to contribute, please see [Contributing Guidelines](/.github/CONTRIBUTE.md).
+Contributions are always welcome & encouraged! :smile: If you'd like to contribute, please see [Contributing Guidelines](CONTRIBUTE.md).
 
 ## Further help
 
