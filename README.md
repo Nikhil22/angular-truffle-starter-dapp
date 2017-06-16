@@ -7,7 +7,7 @@ An Angular2 + Truffle start app.
 ## Demo
 Create a coin with an initial supply and send an amount to your Ethereum wallet address
 
-![demo](src/app/assets/demo.gif)
+![demo](src/assets/demo.gif)
 
 ## How to use
 There are 2 parts to this.
