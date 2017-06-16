@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
 
-An Angular2 + Truffle start app.
+An angular2 + [truffle](https://github.com/trufflesuite/truffle) starter app. Write, compile & deploy smart contracts for Ethereum.
 
 ## Demo
 Create a coin with an initial supply and send an amount to your Ethereum wallet address
@@ -10,16 +10,16 @@ Create a coin with an initial supply and send an amount to your Ethereum wallet 
 ![demo](src/assets/demo.gif)
 
 ## How to use
-There are 2 parts to this.
+There are 2 small parts to successfully running this project.
 
 ### Part 1
 
-1. `git clone`
-2. `cd angular-truffle`
+1. `git clone https://github.com/Nikhil22/angular2-truffle-starter-dapp.git`
+2. `cd angular2-truffle-starter-dapp`
 3. `npm install`
 
 ### Part 2
-Be sure you're connected to an Ethereum client before running these commands. If you're new, install [testrpc](https://github.com/ethereumjs/testrpc) to run a local blockchain RPC server. After that, simply run `testrpc` in a new tab.
+For the second part, be sure you're connected to an Ethereum client before running the commands below. If you're new, install [testrpc](https://github.com/ethereumjs/testrpc) to run a local blockchain RPC server. After that, simply run `testrpc` in a new tab.
 
 And then in the original tab, run:
 
@@ -45,6 +45,10 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
+
+## Contribute
+
+Contributions are always welcome & encouraged! :simple_smile: If you'd like to contribute, please see [Contributing Guidelines](/.github/CONTRIBUTE.md).
 
 ## Further help
 
