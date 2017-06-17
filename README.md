@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/Nikhil22/angular2-truffle-starter-dapp/blob/master/src/assets/logo.png">
+</p>
+
 # Angular-Truffle
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
