@@ -1,4 +1,4 @@
-![Logo](src/asses/logo.png)
+![alt text](src/assets/logo.png)
 
 -----------------------
 
