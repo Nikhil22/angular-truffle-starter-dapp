@@ -4,9 +4,9 @@
 
 # Angular-Truffle
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
-An angular2 + [truffle](https://github.com/trufflesuite/truffle) starter app. Write, compile & deploy smart contracts for Ethereum.
+An angular4 + [truffle](https://github.com/trufflesuite/truffle) starter app. Write, compile & deploy smart contracts for Ethereum.
 
 ## Demo
 Create a coin with an initial supply and send an amount to your Ethereum wallet address
@@ -18,8 +18,8 @@ There are 2 small parts to successfully running this project.
 
 ### Part 1
 
-1. `git clone https://github.com/Nikhil22/angular2-truffle-starter-dapp.git`
-2. `cd angular2-truffle-starter-dapp`
+1. `git clone https://github.com/Nikhil22/angular4-truffle-starter-dapp.git`
+2. `cd angular4-truffle-starter-dapp`
 3. `npm install`
 
 ### Part 2
@@ -59,5 +59,5 @@ Contributions are always welcome & encouraged! :smile: If you'd like to contribu
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Technologies & Languages Used
-1. Angular2 (Typescript/Javascript)
+1. Angular4 (Typescript/Javascript)
 2. Truffle (Solidity)
