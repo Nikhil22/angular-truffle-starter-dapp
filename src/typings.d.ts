@@ -3,4 +3,4 @@ declare var module: {
   id: string;
 };
 
-declare var require: NodeRequire;
+declare var require: any;
