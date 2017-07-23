@@ -9,6 +9,8 @@ Featured on [State of the Dapps](https://dapps.ethercasts.com/dapp/angular2-truf
 ## Demo
 Create a coin with an initial supply and send an amount to your Ethereum wallet address
 
+*Note: This demo was made at the time this project used Angular2. It has since upgraded to Angular4 and works the exact same way :)*
+
 ![demo](src/assets/demo.gif)
 
 ## How to use
