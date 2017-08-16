@@ -1,14 +1,14 @@
-import { Component, HostListener, NgZone } from "@angular/core";
-const Web3 = require("web3");
-const contract = require("truffle-contract");
-const metaincoinArtifacts = require("../../build/contracts/MetaCoin.json");
-import { canBeNumber } from "../util/validation";
+import { Component, HostListener, NgZone } from '@angular/core';
+const Web3 = require('web3');
+const contract = require('truffle-contract');
+const metaincoinArtifacts = require('../../build/contracts/MetaCoin.json');
+import { canBeNumber } from '../util/validation';
 
 declare var window: any;
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html"
+  selector: 'app-root',
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   MetaCoin = contract(metaincoinArtifacts);
@@ -28,7 +28,7 @@ export class AppComponent {
 
   }
 
-  @HostListener("window:load")
+  @HostListener('window:load')
   windowLoaded() {
     this.checkAndInstantiateWeb3();
     this.onReady();
@@ -36,19 +36,19 @@ export class AppComponent {
 
   checkAndInstantiateWeb3 = () => {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-    if (typeof typeof window.web3 !== "undefined") {
+    if (typeof typeof window.web3 !== 'undefined') {
       console.warn(
-        "Using web3 detected from external source. If you find that your accounts don't appear or you have 0 MetaCoin, ensure you've configured that source properly. If using MetaMask, see the following link. Feel free to delete this warning. :) http://truffleframework.com/tutorials/truffle-and-metamask"
+        'Using web3 detected from external source. If you find that your accounts don\'t appear or you have 0 MetaCoin, ensure you\'ve configured that source properly. If using MetaMask, see the following link. Feel free to delete this warning. :) http://truffleframework.com/tutorials/truffle-and-metamask'
       );
       // Use Mist/MetaMask's provider
       this.web3 = new Web3(window.web3.currentProvider);
     } else {
       console.warn(
-        "No web3 detected. Falling back to http://localhost:8545. You should remove this fallback when you deploy live, as it's inherently insecure. Consider switching to Metamask for development. More info here: http://truffleframework.com/tutorials/truffle-and-metamask"
+        'No web3 detected. Falling back to http://localhost:8545. You should remove this fallback when you deploy live, as it\'s inherently insecure. Consider switching to Metamask for development. More info here: http://truffleframework.com/tutorials/truffle-and-metamask'
       );
       // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
       this.web3 = new Web3(
-        new Web3.providers.HttpProvider("http://localhost:8545")
+        new Web3.providers.HttpProvider('http://localhost:8545')
       );
     }
   };
@@ -60,13 +60,13 @@ export class AppComponent {
     // Get the initial account balance so it can be displayed.
     this.web3.eth.getAccounts((err, accs) => {
       if (err != null) {
-        alert("There was an error fetching your accounts.");
+        alert('There was an error fetching your accounts.');
         return;
       }
 
-      if (accs.length == 0) {
+      if (accs.length === 0) {
         alert(
-          "Couldn't get any accounts! Make sure your Ethereum client is configured correctly."
+          'Couldn\'t get any accounts! Make sure your Ethereum client is configured correctly.'
         );
         return;
       }
@@ -96,7 +96,7 @@ export class AppComponent {
       })
       .catch(e => {
         console.log(e);
-        this.setStatus("Error getting balance; see log.");
+        this.setStatus('Error getting balance; see log.');
       });
   };
 
@@ -109,7 +109,7 @@ export class AppComponent {
     const receiver = this.recipientAddress;
     let meta;
 
-    this.setStatus("Initiating transaction... (please wait)");
+    this.setStatus('Initiating transaction... (please wait)');
 
     this.MetaCoin
       .deployed()
@@ -120,12 +120,12 @@ export class AppComponent {
         });
       })
       .then(() => {
-        this.setStatus("Transaction complete!");
+        this.setStatus('Transaction complete!');
         this.refreshBalance();
       })
       .catch(e => {
         console.log(e);
-        this.setStatus("Error sending coin; see log.");
+        this.setStatus('Error sending coin; see log.');
       });
   };
 }
