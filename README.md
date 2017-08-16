@@ -56,7 +56,7 @@ Contributions are always welcome & encouraged! :smile: If you'd like to contribu
 
 ## Contributors
 1. Nikhil Bhaskar (me)
-2. Chris Fraser (https://github.com/chrisfraser)
+2. [Chris Fraser](https://github.com/chrisfraser)
 
 ## Further help
 
