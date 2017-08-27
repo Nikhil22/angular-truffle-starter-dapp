@@ -79,20 +79,8 @@
       "links": {},
       "address": "0xf36a85aff1a3e42d8212cca42b4af64027662bbf",
       "updated_at": 1502883739622
-    },
-    "1503178852183": {
-      "events": {},
-      "links": {},
-      "address": "0x1f1fecd8af3b6ea6e6f84dbafb51e34d41b4929a",
-      "updated_at": 1503178867704
-    },
-    "1503779122740": {
-      "events": {},
-      "links": {},
-      "address": "0x0d48a8a41a65df3cd2820829cb5c204ecab4450b",
-      "updated_at": 1503805428872
     }
   },
   "schema_version": "0.0.5",
-  "updated_at": 1503805428872
+  "updated_at": 1502883739622
 }
