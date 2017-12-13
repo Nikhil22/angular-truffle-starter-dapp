@@ -29,7 +29,7 @@ There are 2 small parts to successfully running this project.
 3. `npm install`
 
 ### Part 2
-For the second part, be sure you're connected to an Ethereum client before running the commands below. If you're new, install [testrpc](https://github.com/ethereumjs/testrpc) to run a local blockchain RPC server. After that, simply run `testrpc` in a new tab.
+For the second part, be sure you're connected to an Ethereum client before running the commands below. If you're new, install [ganache-cli](https://github.com/trufflesuite/ganache-cli) to run a local blockchain RPC server(`npm install -g ganache-cli`). After that, simply run `ganache-cli` in a new tab.
 
 And then in the original tab, run:
 
