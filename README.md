@@ -29,7 +29,9 @@ There are 2 small parts to successfully running this project.
 3. `npm install`
 
 ### Part 2
-For the second part, be sure you're connected to an Ethereum client before running the commands below. If you're new, install [testrpc](https://github.com/ethereumjs/testrpc) to run a local blockchain RPC server. After that, simply run `testrpc` in a new tab.
+For the second part, you're going to need a working copy of [angular-cli](https://github.com/angular/angular-cli) (aka. `ng`) installed in your environment (`npm install -g @angular/cli`). And if you're new, install [ganache-cli](https://github.com/trufflesuite/ganache-cli) to run a local blockchain RPC server(`npm install -g ganache-cli`). After that, simply run `ganache-cli` in a new tab. 
+
+Both of these cli-tools are required before moving forward, and be sure you're connected to an Ethereum client before running the commands below. A great browser based tool is [MetaMask.io](https://metamask.io) and will suit your needs for getting this demo and working quickly.  Be sure to SWITCH the Metamask network (in the upper left hand corner of the pop-up) to Localhost 8545. Otherwise you'll log an web-browser error when you navigate to app in a web browser.
 
 And then in the original tab, run:
 
