@@ -1,8 +1,16 @@
-import { Component, HostListener, NgZone } from '@angular/core';
+import {Component, HostListener, NgZone, OnInit} from '@angular/core';
 const Web3 = require('web3');
 const contract = require('truffle-contract');
 const metaincoinArtifacts = require('../../build/contracts/MetaCoin.json');
-import { canBeNumber } from '../util/validation';
+import {canBeNumber} from '../util/validation';
+import {
+  TruffleContract,
+  ContractValues,
+  EthObservable,
+  DeployedAndStaticData,
+  AppState
+} from 'eth-observable';
+import {MetaCoinService} from "app/meta-coin.service";
 
 declare var window: any;
 
@@ -10,8 +18,9 @@ declare var window: any;
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   MetaCoin = contract(metaincoinArtifacts);
+  pong: DeployedAndStaticData<PongDeployed, PongStaticData, string>;
 
   // TODO add proper types these variables
   account: any;
@@ -24,7 +33,40 @@ export class AppComponent {
   status: string;
   canBeNumber = canBeNumber;
 
-  constructor(private _ngZone: NgZone) {
+  constructor(private _ngZone: NgZone, private _ethObservable: EthObservable, private _pongService: MetaCoinService) {
+
+  }
+
+  ngOnInit(): void {
+    this._ethObservable.createConnection(new Web3(new Web3.providers.HttpProvider('http://localhost:8545')));
+    new Promise(res => {
+      this._ethObservable.web3.eth.getAccounts((err, accs) => {
+        if (err != null) {
+          alert("There was an error fetching your accounts.");
+          return;
+        }
+        if (accs.length === 0) {
+          alert("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
+          return;
+        }
+        this.accounts = accs;
+        this.account = this.accounts[0];
+        console.dir(this.accounts);
+        return res(this.account);
+      });
+    }).then((k: string) => {
+      const appState = new AppState(new Map(), new Map(), new Map(), k);
+      this._ethObservable.getAccounts()
+        .map(contractEnum => {
+          this._ethObservable.getContract(appState.mapAllContractFunction.get(contractEnum), appState);
+          return contractEnum;
+        })
+        .subscribe();
+      this._pongService.pong$.subscribe((data) => {
+        this.pong = data;
+      });
+      this.initialize(appState).subscribe();
+    });
 
   }
 
@@ -33,6 +75,11 @@ export class AppComponent {
     this.checkAndInstantiateWeb3();
     this.onReady();
   }
+
+  initialize(appState: AppState) {
+    return this._pongService.initialize(this._ethObservable, this._pongService, appState);
+  }
+
 
   checkAndInstantiateWeb3 = () => {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
@@ -127,5 +174,34 @@ export class AppComponent {
         console.log(e);
         this.setStatus('Error sending coin; see log.');
       });
+
+    this.pong.deployed.sendCoin(receiver, amount, {from: this.pong.getYourAccount()});
+    this._ethObservable.refresh(this._pongService);
   };
+}
+export enum ContractEnum {
+  META_COIN
+}
+export class PongStaticData {
+  constructor(public pongval: string) {
+  }
+}
+export interface PongDeployed extends TruffleContract {
+  sendCoin(receiver, amount, from),
+  getBalance
+}
+
+
+export class PongContract implements ContractValues<PongDeployed, PongStaticData> {
+
+  constructor(public deployed: PongDeployed, public contract: PongStaticData) {
+  }
+
+  getDeployed(): PongDeployed {
+    return this.deployed;
+  }
+
+  getStaticData(): PongStaticData {
+    return this.contract;
+  }
 }
