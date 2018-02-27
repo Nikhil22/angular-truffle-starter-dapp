@@ -3,6 +3,7 @@ const Web3 = require('web3');
 const contract = require('truffle-contract');
 const metaincoinArtifacts = require('../../build/contracts/MetaCoin.json');
 import { canBeNumber } from '../util/validation';
+import { environment } from '../environments/environment';
 
 declare var window: any;
 
@@ -48,7 +49,7 @@ export class AppComponent {
       );
       // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
       this.web3 = new Web3(
-        new Web3.providers.HttpProvider('http://localhost:8545')
+        new Web3.providers.HttpProvider(environment.HttpProvider)
       );
     }
   };
