@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "compile-start": "truffle compile; truffle migrate; ng serve",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
