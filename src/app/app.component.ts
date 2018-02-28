@@ -35,6 +35,11 @@ export class AppComponent {
     this.onReady();
   }
 
+  @HostListener('window:load')
+  windowLoaded() {
+    this.MetaCoinService.GetBalance(this.account)
+  }
+
   onReady = () => {
 
     // Get the initial account balance so it can be displayed.
@@ -61,28 +66,13 @@ export class AppComponent {
     this.status = message;
   };
 
-  // sendCoin = () => {
-  //   const amount = this.sendingAmount;
-  //   const receiver = this.recipientAddress;
-  //   let meta;
+  sendCoin = () => {
+    this.setStatus('Initiating transaction... (please wait)');
 
-  //   this.setStatus('Initiating transaction... (please wait)');
-
-  //   this.MetaCoin
-  //     .deployed()
-  //     .then(instance => {
-  //       meta = instance;
-  //       return meta.sendCoin(receiver, amount, {
-  //         from: this.account
-  //       });
-  //     })
-  //     .then(() => {
-  //       this.setStatus('Transaction complete!');
-  //       this.refreshBalance();
-  //     })
-  //     .catch(e => {
-  //       console.log(e);
-  //       this.setStatus('Error sending coin; see log.');
-  //     });
-  // };
+    this.MetaCoinService.SendCoin(this.account, this.recipientAddress, this.sendingAmount)
+      .subscribe(() =>{
+        this.setStatus('Transaction complete!');
+        this.refreshBalance();
+      }, e => this.setStatus('Error sending coin; see log.'))
+  };
 }

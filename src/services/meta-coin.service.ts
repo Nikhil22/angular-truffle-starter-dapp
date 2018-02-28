@@ -26,6 +26,7 @@ export class MetaCoinService {
   		  .deployed()
   		  .then(instance => {
   		    meta = instance;
+  		    console.log(meta)
   		    return meta.getBalance.call(account, {
   		      from: account
   		    });
@@ -42,6 +43,7 @@ export class MetaCoinService {
   }
 
   SendCoin(from, to, amount): Observable<any>{
+
   	let meta;
   	return Observable.create(observer => {
   	  this.MetaCoin
@@ -57,6 +59,7 @@ export class MetaCoinService {
   	      observer.next()
   	    })
   	    .catch(e => {
+  	    	console.log(e);
   	      observer.error(e)
   	    });
   	})
