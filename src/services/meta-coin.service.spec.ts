@@ -1,11 +1,12 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { MetaCoinService } from './meta-coin.service';
+import {Web3Service} from './services'
 
 describe('MetaCoinService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MetaCoinService]
+      providers: [MetaCoinService, Web3Service]
     });
   });
 
