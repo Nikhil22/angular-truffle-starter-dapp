@@ -2,10 +2,7 @@ import { Component, HostListener, NgZone } from '@angular/core';
 
 import {Web3Service, MetaCoinService} from '../services/services'
 
-// const contract = require('truffle-contract');
-// const metaincoinArtifacts = require('../../build/contracts/MetaCoin.json');
 import { canBeNumber } from '../util/validation';
-import { environment } from '../environments/environment';
 
 declare var window: any;
 
@@ -14,12 +11,10 @@ declare var window: any;
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  // MetaCoin = contract(metaincoinArtifacts);
 
   // TODO add proper types these variables
   account: any;
   accounts: any;
-  // web3: any;
 
   balance: number;
   sendingAmount: number;
@@ -33,11 +28,6 @@ export class AppComponent {
     private MetaCoinService: MetaCoinService,
     ) {
     this.onReady();
-  }
-
-  @HostListener('window:load')
-  windowLoaded() {
-    this.MetaCoinService.GetBalance(this.account)
   }
 
   onReady = () => {
