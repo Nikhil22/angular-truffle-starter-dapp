@@ -1,5 +1,7 @@
 import { Component, HostListener, NgZone } from '@angular/core';
-const Web3 = require('web3');
+
+import {Web3Service} from '../services/services'
+
 const contract = require('truffle-contract');
 const metaincoinArtifacts = require('../../build/contracts/MetaCoin.json');
 import { canBeNumber } from '../util/validation';
@@ -17,7 +19,7 @@ export class AppComponent {
   // TODO add proper types these variables
   account: any;
   accounts: any;
-  web3: any;
+  // web3: any;
 
   balance: number;
   sendingAmount: number;
@@ -25,41 +27,19 @@ export class AppComponent {
   status: string;
   canBeNumber = canBeNumber;
 
-  constructor(private _ngZone: NgZone) {
-
-  }
-
-  @HostListener('window:load')
-  windowLoaded() {
-    this.checkAndInstantiateWeb3();
+  constructor(
+    private _ngZone: NgZone,
+    private Web3Service: Web3Service,
+    ) {
     this.onReady();
   }
 
-  checkAndInstantiateWeb3 = () => {
-    // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-    if (typeof window.web3 !== 'undefined') {
-      console.warn(
-        'Using web3 detected from external source. If you find that your accounts don\'t appear or you have 0 MetaCoin, ensure you\'ve configured that source properly. If using MetaMask, see the following link. Feel free to delete this warning. :) http://truffleframework.com/tutorials/truffle-and-metamask'
-      );
-      // Use Mist/MetaMask's provider
-      this.web3 = new Web3(window.web3.currentProvider);
-    } else {
-      console.warn(
-        'No web3 detected. Falling back to http://localhost:8545. You should remove this fallback when you deploy live, as it\'s inherently insecure. Consider switching to Metamask for development. More info here: http://truffleframework.com/tutorials/truffle-and-metamask'
-      );
-      // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-      this.web3 = new Web3(
-        new Web3.providers.HttpProvider(environment.HttpProvider)
-      );
-    }
-  };
-
   onReady = () => {
     // Bootstrap the MetaCoin abstraction for Use.
-    this.MetaCoin.setProvider(this.web3.currentProvider);
+    this.MetaCoin.setProvider(this.Web3Service.web3.currentProvider);
 
     // Get the initial account balance so it can be displayed.
-    this.web3.eth.getAccounts((err, accs) => {
+    this.Web3Service.web3.eth.getAccounts((err, accs) => {
       if (err != null) {
         alert('There was an error fetching your accounts.');
         return;
