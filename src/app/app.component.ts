@@ -39,18 +39,8 @@ export class AppComponent {
     this.MetaCoin.setProvider(this.Web3Service.web3.currentProvider);
 
     // Get the initial account balance so it can be displayed.
-    this.Web3Service.web3.eth.getAccounts((err, accs) => {
-      if (err != null) {
-        alert('There was an error fetching your accounts.');
-        return;
-      }
 
-      if (accs.length === 0) {
-        alert(
-          'Couldn\'t get any accounts! Make sure your Ethereum client is configured correctly.'
-        );
-        return;
-      }
+    this.Web3Service.GetAccounts().subscribe(accs => {
       this.accounts = accs;
       this.account = this.accounts[0];
 
@@ -59,7 +49,7 @@ export class AppComponent {
       this._ngZone.run(() =>
         this.refreshBalance()
       );
-    });
+    }, err => alert(err))
   };
 
   refreshBalance = () => {

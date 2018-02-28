@@ -48,10 +48,7 @@ export class Web3Service {
   	      observer.error('Couldn\'t get any accounts! Make sure your Ethereum client is configured correctly.')
   	    }
 
-  	    observer.next({
-  	    	accounts: accs,
-  	    	account: accs[0]
-  	    })
+  	    observer.next(accs)
   	    observer.complete()
   	  });
   	})
