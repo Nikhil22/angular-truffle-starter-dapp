@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { fromPromise } from 'rxjs/observable/fromPromise';
-import {Web3Service} from './web3.service'
+import { Web3Service } from './web3.service'
 
 const metaincoinArtifacts = require('../../build/contracts/MetaCoin.json');
 const contract = require('truffle-contract');
@@ -26,7 +26,7 @@ export class MetaCoinService {
   		  .deployed()
   		  .then(instance => {
   		    meta = instance;
-  		    console.log(meta)
+          //we use call here so the call doesn't try and write, making it free
   		    return meta.getBalance.call(account, {
   		      from: account
   		    });
