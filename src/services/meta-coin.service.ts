@@ -18,7 +18,7 @@ export class MetaCoinService {
   	this.MetaCoin.setProvider(web3Ser.web3.currentProvider);
   }
 
-  GetBalance(account): Observable<number> {
+  getBalance(account): Observable<number> {
   	let meta;
 
   	return Observable.create(observer => {
@@ -42,7 +42,7 @@ export class MetaCoinService {
   	})
   }
 
-  SendCoin(from, to, amount): Observable<any>{
+  sendCoin(from, to, amount): Observable<any>{
 
   	let meta;
   	return Observable.create(observer => {

@@ -24,8 +24,8 @@ export class AppComponent {
 
   constructor(
     private _ngZone: NgZone,
-    private Web3Service: Web3Service,
-    private MetaCoinService: MetaCoinService,
+    private web3Service: Web3Service,
+    private metaCoinService: MetaCoinService,
     ) {
     this.onReady();
   }
@@ -33,7 +33,7 @@ export class AppComponent {
   onReady = () => {
 
     // Get the initial account balance so it can be displayed.
-    this.Web3Service.GetAccounts().subscribe(accs => {
+    this.web3Service.getAccounts().subscribe(accs => {
       this.accounts = accs;
       this.account = this.accounts[0];
 
@@ -46,7 +46,7 @@ export class AppComponent {
   };
 
   refreshBalance = () => {
-    this.MetaCoinService.GetBalance(this.account)
+    this.metaCoinService.getBalance(this.account)
       .subscribe(value => {
         this.balance = value
       }, e => {this.setStatus('Error getting balance; see log.')})
@@ -59,7 +59,7 @@ export class AppComponent {
   sendCoin = () => {
     this.setStatus('Initiating transaction... (please wait)');
 
-    this.MetaCoinService.SendCoin(this.account, this.recipientAddress, this.sendingAmount)
+    this.metaCoinService.sendCoin(this.account, this.recipientAddress, this.sendingAmount)
       .subscribe(() =>{
         this.setStatus('Transaction complete!');
         this.refreshBalance();
