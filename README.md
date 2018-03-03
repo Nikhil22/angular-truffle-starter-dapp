@@ -40,6 +40,8 @@ And then in the original tab, run:
 6. `ng serve`. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 7. Make sure there are no errors in browser console
 
+You can also run `npm run compile-start` to automatically run all 3 steps
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
