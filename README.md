@@ -69,6 +69,7 @@ Contributions are always welcome & encouraged! :smile: If you'd like to contribu
 2. [Chris Fraser](https://github.com/chrisfraser)
 3. [Rowan de Haas](https://github.com/rowandh)
 4. [vveerrgg](https://github.com/vveerrgg)
+5. [Sam Borick](https://github.com/mibzman)
 
 ## Further help
 
