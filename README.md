@@ -24,8 +24,8 @@ There are 2 small parts to successfully running this project.
 
 ### Part 1
 
-1. `git clone https://github.com/Nikhil22/angular4-truffle-starter-dapp.git`
-2. `cd angular4-truffle-starter-dapp`
+1. `git clone https://github.com/Nikhil22/angular-truffle-starter-dapp.git`
+2. `cd angular-truffle-starter-dapp`
 3. `npm install`
 
 ### Part 2
